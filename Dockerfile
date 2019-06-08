@@ -18,8 +18,8 @@ RUN apt-get update && apt-get -y --no-install-recommends install curl \
                  -C /usr/local/bin docker/docker \
   && rm docker-${DOCKERVERSION}.tgz \
   && rm -rf /var/lib/apt/lists/* \
-  && yarn global add heroku
-RUN heroku plugins:install builds
+  && yarn global add heroku \
+  && apt-get install git
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
